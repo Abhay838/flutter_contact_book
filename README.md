@@ -56,17 +56,17 @@ A fully-featured Google Contacts-like application built with Flutter, using **Pr
 
 ## ✨ Features
 
-| Feature | Status | Description |
-|---|---|---|
-| **Add Contact** | ✅ | Full form with name, phone, email, address, company, notes & photo |
-| **Edit Contact** | ✅ | Pre-filled form for updating any contact field |
-| **Delete Contact** | ✅ | Confirmation dialog before permanent deletion |
-| **Contact Detail** | ✅ | Profile page with gradient header and action buttons |
-| **Call Contact** | ✅ | One-tap calling via device dialer (`tel:` scheme) |
-| **Send SMS** | ✅ | One-tap messaging (`sms:` scheme) |
-| **Favorites** | ✅ | Star/unstar contacts; dedicated Favorites tab |
-| **Photo Picker** | ✅ | Camera or gallery photo for each contact |
-| **Offline Storage** | ✅ | SQLite for fully offline data persistence |
+| Feature             | Status | Description                                                        |
+|---------------------|--------|--------------------------------------------------------------------|
+| **Add Contact**     | ✅      | Full form with name, phone, email, address, company, notes & photo |
+| **Edit Contact**    | ✅      | Pre-filled form for updating any contact field                     |
+| **Delete Contact**  | ✅      | Confirmation dialog before permanent deletion                      |
+| **Contact Detail**  | ✅      | Profile page with gradient header and action buttons               |
+| **Call Contact**    | ✅      | One-tap calling via device dialer (`tel:` scheme)                  |
+| **Send SMS**        | ✅      | One-tap messaging (`sms:` scheme)                                  |
+| **Favorites**       | ✅      | Star/unstar contacts; dedicated Favorites tab                      |
+| **Photo Picker**    | ✅      | Camera or gallery photo for each contact                           |
+| **Offline Storage** | ✅      | SQLite for fully offline data persistence                          |
 
 ---
 
@@ -103,7 +103,6 @@ lib/
 │       ├── contact_avatar.dart        # Reusable avatar (image or initials)
 │       ├── contact_list_tile.dart     # Reusable list row
 │       ├── empty_state.dart           # Empty/zero-state UI
-│       └── search_bar_widget.dart     # Animated search bar
 └── utils/
     ├── app_theme.dart                 # Material 3 theme, colors
     └── app_routes.dart                # Route name constants
@@ -174,7 +173,6 @@ flutter build apk --release
 ## 🎨 UI Design Highlights
 
 - **Material 3** design system throughout
-- Alphabetical **section headers** on the contacts list
 - **Hero animation** on the contact avatar (list → detail)
 - **Gradient header** on the contact detail screen (avatar colour-matched)
 - **Slide-up** page transitions for add/edit/detail screens
