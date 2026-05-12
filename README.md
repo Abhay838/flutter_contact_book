@@ -4,21 +4,72 @@ A fully-featured Google Contacts-like application built with Flutter, using **Pr
 
 ---
 
+## 📸 App Screenshots
+
+### Home Screen — Contacts Tab (Empty & With Contacts)
+
+<p float="left">
+  <img src="home_contact.png" width="30%" alt="Home screen empty state" />
+  &nbsp;&nbsp;
+  <img src="saved_cont.png" width="30%" alt="Contacts list with contact" />
+  &nbsp;&nbsp;
+  <img src="add_fav.png" width="30%" alt="Favorites tab with starred contact" />
+</p>
+
+> Left: Empty state with "No contacts yet" prompt and FAB. Middle: Contacts list with alphabetical section header "A" and a saved contact showing photo and phone number. Right: Favorites tab showing a starred contact.
+
+---
+
+### Add Contact & Edit Contact
+
+<p float="left">
+  <img src="add_cont.png" width="45%" alt="Add new contact screen" />
+  &nbsp;&nbsp;&nbsp;
+  <img src="edit_conta.png" width="45%" alt="Edit contact screen with pre-filled data" />
+</p>
+
+> Left: New Contact form with avatar placeholder, Basic Info fields (Name, Phone, Email) and More Details (Company, Address, Notes). Right: Edit Contact with the same form pre-filled with existing contact data and real photo shown in the avatar.
+
+---
+
+### Contact Detail & Favorites Empty State
+
+<p float="left">
+  <img src="view_cont.png" width="45%" alt="Contact detail screen" />
+  &nbsp;&nbsp;&nbsp;
+  <img src="fav_cont.png" width="45%" alt="Favorites tab empty state" />
+</p>
+
+> Left: Contact profile with hero avatar, gradient header, three action buttons (Call, Message, Email), Contact Info card showing phone and email, and Delete Contact option. Right: Favorites tab empty state with "No favorites yet" message.
+
+---
+
+### Delete Confirmation Dialog
+
+<p align="center">
+  <img src="delete_cont.png" width="45%" alt="Delete contact confirmation dialog" />
+</p>
+
+> Confirmation dialog with contact name, warning message "This action cannot be undone", and Cancel / Delete buttons — preventing accidental deletions.
+
+---
+
 ## ✨ Features
 
-| Feature | Description |
-|---|---|
-| **View Contacts** | Alphabetically grouped contact list with search |
-| **Add Contact** | Full form with name, phone, email, address, company, notes & photo |
-| **Edit Contact** | Pre-filled form for updating any contact field |
-| **Delete Contact** | Confirmation dialog before permanent deletion |
-| **Contact Detail** | Beautiful profile page with all info |
-| **Call Contact** | One-tap calling via device dialer |
-| **Send SMS** | One-tap messaging |
-| **Send Email** | One-tap email composition |
-| **Favorites** | Star/unstar contacts; dedicated Favorites tab |
-| **Search** | Real-time search across name, phone, email |
-| **Offline Storage** | SQLite for fully offline data persistence |
+| Feature | Status | Description |
+|---|---|---|
+| **View Contacts** | ✅ | Alphabetically grouped contact list |
+| **Add Contact** | ✅ | Full form with name, phone, email, address, company, notes & photo |
+| **Edit Contact** | ✅ | Pre-filled form for updating any contact field |
+| **Delete Contact** | ✅ | Confirmation dialog before permanent deletion |
+| **Contact Detail** | ✅ | Profile page with gradient header and action buttons |
+| **Call Contact** | ✅ | One-tap calling via device dialer (`tel:` scheme) |
+| **Send SMS** | ✅ | One-tap messaging (`sms:` scheme) |
+| **Send Email** | ✅ | One-tap email composition (`mailto:` scheme) |
+| **Favorites** | ✅ | Star/unstar contacts; dedicated Favorites tab |
+| **Search** | ✅ | Real-time SQLite search across name, phone, email |
+| **Photo Picker** | ✅ | Camera or gallery photo for each contact |
+| **Offline Storage** | ✅ | SQLite for fully offline data persistence |
 
 ---
 
@@ -26,7 +77,7 @@ A fully-featured Google Contacts-like application built with Flutter, using **Pr
 
 ```
 lib/
-├── main.dart                          # App entry point, routing
+├── main.dart                          # App entry point, routing, animations
 ├── models/
 │   └── contact_model.dart             # M — Data model, SQLite mapping
 ├── controllers/
@@ -34,7 +85,7 @@ lib/
 ├── providers/
 │   └── contact_provider.dart          # State management (ChangeNotifier)
 ├── services/
-│   └── database_service.dart          # SQLite CRUD layer
+│   └── database_service.dart          # SQLite CRUD layer (singleton)
 ├── views/
 │   ├── screens/
 │   │   ├── home_screen.dart           # V — Bottom nav shell
@@ -99,15 +150,15 @@ flutter build apk --release
 
 ## 📦 Dependencies
 
-| Package | Purpose |
-|---|---|
-| `provider ^6.1.1` | State management |
-| `sqflite ^2.3.0` | Local SQLite database |
-| `path ^1.9.0` | Database path resolution |
-| `url_launcher ^6.2.4` | Call, SMS, Email deep links |
-| `image_picker ^1.0.7` | Camera & gallery photo pick |
-| `uuid ^4.3.3` | Unique contact IDs |
-| `intl ^0.19.0` | Date formatting |
+| Package | Version | Purpose |
+|---|---|---|
+| `provider` | ^6.1.1 | State management |
+| `sqflite` | ^2.3.0 | Local SQLite database |
+| `path` | ^1.9.0 | Database path resolution |
+| `url_launcher` | ^6.2.4 | Call, SMS, Email deep links |
+| `image_picker` | ^1.0.7 | Camera & gallery photo pick |
+| `uuid` | ^4.3.3 | Unique contact IDs |
+| `intl` | ^0.19.0 | Date formatting |
 
 ---
 
@@ -135,9 +186,11 @@ flutter build apk --release
 - **Material 3** design system throughout
 - Alphabetical **section headers** on the contacts list
 - **Hero animation** on the contact avatar (list → detail)
+- **Gradient header** on the contact detail screen (avatar colour-matched)
 - **Slide-up** page transitions for add/edit/detail screens
-- **Optimistic UI updates** for favorite toggling
-- Responsive layout supporting various screen sizes
+- **Optimistic UI updates** for favorite toggling (instant star response)
+- **Empty states** with helpful prompts on both tabs
+- Responsive layout supporting various devices and screen sizes
 
 ---
 
@@ -150,16 +203,6 @@ flutter test
 # Integration test on device
 flutter test integration_test/
 ```
-
----
-
-## 📸 Screens
-
-1. **Home / Contacts Tab** — Grouped alphabetical list, FAB to add
-2. **Favorites Tab** — Starred contacts with count
-3. **Contact Detail** — Large avatar, action buttons (Call/SMS/Email), info cards
-4. **Add/Edit Contact** — Photo picker, validated form
-5. **Search** — Real-time inline search via app bar
 
 ---
 
