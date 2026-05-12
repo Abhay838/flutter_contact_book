@@ -205,5 +205,3 @@ flutter build apk --release --target-platform android-arm64
 APK location: `build/app/outputs/flutter-apk/app-release.apk`
 
 ---
-
-*Submitted by Abhay | Flutter Developer Assignment | Due: 13th May 2026*
