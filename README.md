@@ -9,11 +9,11 @@ A fully-featured Google Contacts-like application built with Flutter, using **Pr
 ### Home Screen — Contacts Tab (Empty & With Contacts)
 
 <p float="left">
-  <img src="home_contact.png" width="30%" alt="Home screen empty state" />
+  <img src="assets/home_contact.png" width="30%" alt="Home screen empty state" />
   &nbsp;&nbsp;
-  <img src="saved_cont.png" width="30%" alt="Contacts list with contact" />
+  <img src="assets/saved_cont.png" width="30%" alt="Contacts list with contact" />
   &nbsp;&nbsp;
-  <img src="add_fav.png" width="30%" alt="Favorites tab with starred contact" />
+  <img src="assets/add_fav.png" width="30%" alt="Favorites tab with starred contact" />
 </p>
 
 > Left: Empty state with "No contacts yet" prompt and FAB. Middle: Contacts list with alphabetical section header "A" and a saved contact showing photo and phone number. Right: Favorites tab showing a starred contact.
@@ -23,9 +23,9 @@ A fully-featured Google Contacts-like application built with Flutter, using **Pr
 ### Add Contact & Edit Contact
 
 <p float="left">
-  <img src="add_cont.png" width="45%" alt="Add new contact screen" />
+  <img src="assets/add_cont.png" width="45%" alt="Add new contact screen" />
   &nbsp;&nbsp;&nbsp;
-  <img src="edit_conta.png" width="45%" alt="Edit contact screen with pre-filled data" />
+  <img src="assets/edit_conta.png" width="45%" alt="Edit contact screen with pre-filled data" />
 </p>
 
 > Left: New Contact form with avatar placeholder, Basic Info fields (Name, Phone, Email) and More Details (Company, Address, Notes). Right: Edit Contact with the same form pre-filled with existing contact data and real photo shown in the avatar.
@@ -35,9 +35,9 @@ A fully-featured Google Contacts-like application built with Flutter, using **Pr
 ### Contact Detail & Favorites Empty State
 
 <p float="left">
-  <img src="view_cont.png" width="45%" alt="Contact detail screen" />
+  <img src="assets/view_cont.png" width="45%" alt="Contact detail screen" />
   &nbsp;&nbsp;&nbsp;
-  <img src="fav_cont.png" width="45%" alt="Favorites tab empty state" />
+  <img src="assets/fav_cont.png" width="45%" alt="Favorites tab empty state" />
 </p>
 
 > Left: Contact profile with hero avatar, gradient header, three action buttons (Call, Message, Email), Contact Info card showing phone and email, and Delete Contact option. Right: Favorites tab empty state with "No favorites yet" message.
@@ -47,7 +47,7 @@ A fully-featured Google Contacts-like application built with Flutter, using **Pr
 ### Delete Confirmation Dialog
 
 <p align="center">
-  <img src="delete_cont.png" width="45%" alt="Delete contact confirmation dialog" />
+  <img src="assets/delete_cont.png" width="45%" alt="Delete contact confirmation dialog" />
 </p>
 
 > Confirmation dialog with contact name, warning message "This action cannot be undone", and Cancel / Delete buttons — preventing accidental deletions.
@@ -58,18 +58,24 @@ A fully-featured Google Contacts-like application built with Flutter, using **Pr
 
 | Feature | Status | Description |
 |---|---|---|
-| **View Contacts** | ✅ | Alphabetically grouped contact list |
 | **Add Contact** | ✅ | Full form with name, phone, email, address, company, notes & photo |
 | **Edit Contact** | ✅ | Pre-filled form for updating any contact field |
 | **Delete Contact** | ✅ | Confirmation dialog before permanent deletion |
 | **Contact Detail** | ✅ | Profile page with gradient header and action buttons |
 | **Call Contact** | ✅ | One-tap calling via device dialer (`tel:` scheme) |
 | **Send SMS** | ✅ | One-tap messaging (`sms:` scheme) |
-| **Send Email** | ✅ | One-tap email composition (`mailto:` scheme) |
 | **Favorites** | ✅ | Star/unstar contacts; dedicated Favorites tab |
-| **Search** | ✅ | Real-time SQLite search across name, phone, email |
 | **Photo Picker** | ✅ | Camera or gallery photo for each contact |
 | **Offline Storage** | ✅ | SQLite for fully offline data persistence |
+
+---
+
+## ✨ Upcoming Features
+
+| Feature        | Status | Description                                       |
+|----------------|--------|---------------------------------------------------|
+| **Send Email** | ✅      | One-tap email composition (`mailto:` scheme)      |
+| **Search**     | ✅      | Real-time SQLite search across name, phone, email |
 
 ---
 
@@ -103,22 +109,6 @@ lib/
     └── app_routes.dart                # Route name constants
 ```
 
-### Data Flow
-
-```
-User action (UI)
-    │
-    ▼
-ContactProvider  ─── delegates business logic ──▶  ContactController
-    │                                                       │
-    │                                              validates & transforms
-    │                                                       │
-    │                                                       ▼
-    └────────────────── reads result ◀────────────  DatabaseService (SQLite)
-    │
-    ▼
-notifyListeners() → UI rebuilds via Consumer<ContactProvider>
-```
 
 ---
 
